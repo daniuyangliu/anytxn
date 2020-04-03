@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linktree.sikehome.mapper.base.UserBaseMapper">
+
+
+    <insert id="insertUser" >
+        INSERT INTO `t_user0`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="name!=null">
+                        `name`,
+                    </if>
+                    <if test="city_id!=null">
+                        `city_id`,
+                    </if>
+                    <if test="sex!=null">
+                        `sex`,
+                    </if>
+                    <if test="phone!=null">
+                        `phone`,
+                    </if>
+                    <if test="email!=null">
+                        `email`,
+                    </if>
+                    <if test="create_time!=null">
+                        `create_time`,
+                    </if>
+                    <if test="password!=null">
+                        `password`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="name!=null">
+                    #{name},
+                </if>
+                <if test="city_id!=null">
+                    #{city_id},
+                </if>
+                <if test="sex!=null">
+                    #{sex},
+                </if>
+                <if test="phone!=null">
+                    #{phone},
+                </if>
+                <if test="email!=null">
+                    #{email},
+                </if>
+                <if test="create_time!=null">
+                    #{create_time},
+                </if>
+                <if test="password!=null">
+                    #{password},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updateUser">
+        UPDATE `t_user0`
+        SET
+        <trim suffixOverrides=",">
+            <if test="name != null and name!=''">
+                `name` = #{name},
+            </if>
+            <if test="city_id != null">
+                `city_id` = #{city_id},
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex},
+            </if>
+            <if test="phone != null and phone!=''">
+                `phone` = #{phone},
+            </if>
+            <if test="email != null and email!=''">
+                `email` = #{email},
+            </if>
+            <if test="create_time != null">
+                `create_time` = #{create_time},
+            </if>
+            <if test="password != null and password!=''">
+                `password` = #{password},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+
+
+    <resultMap type="com.linktree.sikehome.entity.User" id="UserMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="city_id" column="city_id"/>
+        <result property="sex" column="sex"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="create_time" column="create_time"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+
+    <select id="queryUser" resultMap="UserMap">
+        select
+        <include refid="baseResult"></include>
+        from  `t_user0`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="name != null and name!=''">
+                `name` = #{name} and
+            </if>
+            <if test="city_id != null">
+                `city_id` = #{city_id} and
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex} and
+            </if>
+            <if test="phone != null and phone!=''">
+                `phone` = #{phone} and
+            </if>
+            <if test="email != null and email!=''">
+                `email` = #{email} and
+            </if>
+            <if test="create_time != null">
+                `create_time` = #{create_time} and
+            </if>
+            <if test="password != null and password!=''">
+                `password` = #{password} and
+            </if>
+            <if test = "(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == true">
+                <if test="idList != null">
+                    `id` in
+                    <foreach collection="idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                <if test="nameList != null">
+                    `name` in
+                    <foreach collection="nameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyName!=null and fuzzyName.size()>0">
+                    (
+                    <foreach collection="fuzzyName"  separator="or" item="item">
+                        `Name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyName!=null and rightFuzzyName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyName"  separator="or" item="item">
+                        `Name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="city_idList != null">
+                    `city_id` in
+                    <foreach collection="city_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="city_idSt !=null">
+                    `city_id` >= #{city_idSt} and
+                </if>
+                <if test="city_idEd!=null">
+                    `city_id` &lt;= #{city_idEd} and
+                </if>
+                <if test="sexList != null">
+                    `sex` in
+                    <foreach collection="sexList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="sexSt !=null">
+                    `sex` >= #{sexSt} and
+                </if>
+                <if test="sexEd!=null">
+                    `sex` &lt;= #{sexEd} and
+                </if>
+                <if test="phoneList != null">
+                    `phone` in
+                    <foreach collection="phoneList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyPhone!=null and fuzzyPhone.size()>0">
+                    (
+                    <foreach collection="fuzzyPhone"  separator="or" item="item">
+                        `Phone` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPhone!=null and rightFuzzyPhone.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPhone"  separator="or" item="item">
+                        `Phone` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="emailList != null">
+                    `email` in
+                    <foreach collection="emailList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyEmail!=null and fuzzyEmail.size()>0">
+                    (
+                    <foreach collection="fuzzyEmail"  separator="or" item="item">
+                        `Email` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyEmail!=null and rightFuzzyEmail.size()>0">
+                    (
+                    <foreach collection="rightFuzzyEmail"  separator="or" item="item">
+                        `Email` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="create_timeList != null">
+                    `create_time` in
+                    <foreach collection="create_timeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="create_timeSt !=null">
+                    `create_time` >= #{create_timeSt} and
+                </if>
+                <if test="create_timeEd!=null">
+                    `create_time` &lt;= #{create_timeEd} and
+                </if>
+                <if test="passwordList != null">
+                    `password` in
+                    <foreach collection="passwordList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyPassword!=null and fuzzyPassword.size()>0">
+                    (
+                    <foreach collection="fuzzyPassword"  separator="or" item="item">
+                        `Password` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPassword!=null and rightFuzzyPassword.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPassword"  separator="or" item="item">
+                        `Password` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryUserLimit1" resultMap="UserMap">
+        select
+        <include refid="baseResult"></include>
+        from  `t_user0`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="name != null and name!=''">
+                `name` = #{name} and
+            </if>
+            <if test="city_id != null">
+                `city_id` = #{city_id} and
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex} and
+            </if>
+            <if test="phone != null and phone!=''">
+                `phone` = #{phone} and
+            </if>
+            <if test="email != null and email!=''">
+                `email` = #{email} and
+            </if>
+            <if test="create_time != null">
+                `create_time` = #{create_time} and
+            </if>
+            <if test="password != null and password!=''">
+                `password` = #{password} and
+            </if>
+            <if test = "(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="nameList != null">
+                        `name` in
+                        <foreach collection="nameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyName!=null and fuzzyName.size()>0">
+                    (
+                    <foreach collection="fuzzyName"  separator="or" item="item">
+                        `Name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyName!=null and rightFuzzyName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyName"  separator="or" item="item">
+                        `Name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="city_idList != null">
+                        `city_id` in
+                        <foreach collection="city_idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="city_idSt !=null">
+                    `city_id` >= #{city_idSt} and
+                </if>
+                <if test="city_idEd!=null">
+                    `city_id` &lt;= #{city_idEd} and
+                </if>
+                    <if test="sexList != null">
+                        `sex` in
+                        <foreach collection="sexList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="sexSt !=null">
+                    `sex` >= #{sexSt} and
+                </if>
+                <if test="sexEd!=null">
+                    `sex` &lt;= #{sexEd} and
+                </if>
+                    <if test="phoneList != null">
+                        `phone` in
+                        <foreach collection="phoneList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyPhone!=null and fuzzyPhone.size()>0">
+                    (
+                    <foreach collection="fuzzyPhone"  separator="or" item="item">
+                        `Phone` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPhone!=null and rightFuzzyPhone.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPhone"  separator="or" item="item">
+                        `Phone` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="emailList != null">
+                        `email` in
+                        <foreach collection="emailList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyEmail!=null and fuzzyEmail.size()>0">
+                    (
+                    <foreach collection="fuzzyEmail"  separator="or" item="item">
+                        `Email` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyEmail!=null and rightFuzzyEmail.size()>0">
+                    (
+                    <foreach collection="rightFuzzyEmail"  separator="or" item="item">
+                        `Email` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="create_timeList != null">
+                        `create_time` in
+                        <foreach collection="create_timeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="create_timeSt !=null">
+                    `create_time` >= #{create_timeSt} and
+                </if>
+                <if test="create_timeEd!=null">
+                    `create_time` &lt;= #{create_timeEd} and
+                </if>
+                    <if test="passwordList != null">
+                        `password` in
+                        <foreach collection="passwordList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyPassword!=null and fuzzyPassword.size()>0">
+                    (
+                    <foreach collection="fuzzyPassword"  separator="or" item="item">
+                        `Password` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyPassword!=null and rightFuzzyPassword.size()>0">
+                    (
+                    <foreach collection="rightFuzzyPassword"  separator="or" item="item">
+                        `Password` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `name`,
+        `city_id`,
+        `sex`+0 as `sex`,
+        `phone`,
+        `email`,
+        `create_time`,
+        `password`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.name==true">
+                        `name`,
+                    </if>
+                    <if test="fetchFields.fetchFields.city_id==true">
+                        `city_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.sex==true">
+                        `sex`+0 as `sex`,
+                    </if>
+                    <if test="fetchFields.fetchFields.phone==true">
+                        `phone`,
+                    </if>
+                    <if test="fetchFields.fetchFields.email==true">
+                        `email`,
+                    </if>
+                    <if test="fetchFields.fetchFields.create_time==true">
+                        `create_time`,
+                    </if>
+                    <if test="fetchFields.fetchFields.password==true">
+                        `password`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.name==null">
+                        `name`,
+                    </if>
+                    <if test="fetchFields.excludeFields.city_id==null">
+                        `city_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.sex==null">
+                        `sex`+0 as `sex`,
+                    </if>
+                    <if test="fetchFields.excludeFields.phone==null">
+                        `phone`,
+                    </if>
+                    <if test="fetchFields.excludeFields.email==null">
+                        `email`,
+                    </if>
+                    <if test="fetchFields.excludeFields.create_time==null">
+                        `create_time`,
+                    </if>
+                    <if test="fetchFields.excludeFields.password==null">
+                        `password`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>
