@@ -14,8 +14,6 @@ public interface addressBaseMapper {
 
     int updateaddress(address object);
 
-    int update(address.UpdateBuilder object);
-
     List<address> queryaddress(address object);
 
     address queryaddressLimit1(address object);

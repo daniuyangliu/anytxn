@@ -16,7 +16,7 @@ class YangliuApplicationTests {
     @Test
     void contextLoads() {
         address address = new address();
-        address.setName("123");
+        address.builder().name("郭磊").code("编码0001").build();
         addressBaseMapper.insertaddress(address);
     }
 
