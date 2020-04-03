@@ -1,4 +1,5 @@
 package com.linktree.sikehome.entity;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,24 +11,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+
 /**
-*
-*  @author author
-*/
+ * @author author
+ */
 @Getter
 @Setter
 @ToString
 @Builder
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1585931722668L;
+    private static final long serialVersionUID = 1585933724946L;
+
     @Tolerate
     public User() {
     }
 
     /**
      * 主键
-     *
+     * <p>
      * isNullAble:0
      */
     private Long id;
@@ -42,7 +44,7 @@ public class User implements Serializable {
      * 城市
      * isNullAble:1
      */
-    private Integer city_id;
+    private Integer cityId;
 
     /**
      * 性别
@@ -66,11 +68,18 @@ public class User implements Serializable {
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
-    private java.time.LocalDateTime create_time;
+    private java.time.LocalDateTime createTime;
 
     /**
      * 密码
      * isNullAble:1
      */
     private String password;
+
+    /**
+     * 登录账号
+     * isNullAble:1
+     */
+    private String loginName;
+
 }

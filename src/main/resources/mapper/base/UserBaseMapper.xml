@@ -14,7 +14,7 @@
                     <if test="name!=null">
                         `name`,
                     </if>
-                    <if test="city_id!=null">
+                    <if test="cityId!=null">
                         `city_id`,
                     </if>
                     <if test="sex!=null">
@@ -26,11 +26,14 @@
                     <if test="email!=null">
                         `email`,
                     </if>
-                    <if test="create_time!=null">
+                    <if test="createTime!=null">
                         `create_time`,
                     </if>
                     <if test="password!=null">
                         `password`,
+                    </if>
+                    <if test="loginName!=null">
+                        `login_name`,
                     </if>
         </trim>
         )
@@ -43,8 +46,8 @@
                 <if test="name!=null">
                     #{name},
                 </if>
-                <if test="city_id!=null">
-                    #{city_id},
+                <if test="cityId!=null">
+                    #{cityId},
                 </if>
                 <if test="sex!=null">
                     #{sex},
@@ -55,11 +58,14 @@
                 <if test="email!=null">
                     #{email},
                 </if>
-                <if test="create_time!=null">
-                    #{create_time},
+                <if test="createTime!=null">
+                    #{createTime},
                 </if>
                 <if test="password!=null">
                     #{password},
+                </if>
+                <if test="loginName!=null">
+                    #{loginName},
                 </if>
         </trim>
         )
@@ -75,8 +81,8 @@
             <if test="name != null and name!=''">
                 `name` = #{name},
             </if>
-            <if test="city_id != null">
-                `city_id` = #{city_id},
+            <if test="cityId != null">
+                `city_id` = #{cityId},
             </if>
             <if test="sex != null">
                 `sex` = #{sex},
@@ -87,11 +93,14 @@
             <if test="email != null and email!=''">
                 `email` = #{email},
             </if>
-            <if test="create_time != null">
-                `create_time` = #{create_time},
+            <if test="createTime != null">
+                `create_time` = #{createTime},
             </if>
             <if test="password != null and password!=''">
                 `password` = #{password},
+            </if>
+            <if test="loginName != null and loginName!=''">
+                `login_name` = #{loginName},
             </if>
         </trim>
         WHERE
@@ -101,16 +110,16 @@
     </update>
 
 
-
     <resultMap type="com.linktree.sikehome.entity.User" id="UserMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="city_id" column="city_id"/>
+        <result property="cityId" column="city_id"/>
         <result property="sex" column="sex"/>
         <result property="phone" column="phone"/>
         <result property="email" column="email"/>
-        <result property="create_time" column="create_time"/>
+        <result property="createTime" column="create_time"/>
         <result property="password" column="password"/>
+        <result property="loginName" column="login_name"/>
     </resultMap>
 
 
@@ -125,8 +134,8 @@
             <if test="name != null and name!=''">
                 `name` = #{name} and
             </if>
-            <if test="city_id != null">
-                `city_id` = #{city_id} and
+            <if test="cityId != null">
+                `city_id` = #{cityId} and
             </if>
             <if test="sex != null">
                 `sex` = #{sex} and
@@ -137,11 +146,14 @@
             <if test="email != null and email!=''">
                 `email` = #{email} and
             </if>
-            <if test="create_time != null">
-                `create_time` = #{create_time} and
+            <if test="createTime != null">
+                `create_time` = #{createTime} and
             </if>
             <if test="password != null and password!=''">
                 `password` = #{password} and
+            </if>
+            <if test="loginName != null and loginName!=''">
+                `login_name` = #{loginName} and
             </if>
             <if test = "(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == true">
                 <if test="idList != null">
@@ -176,17 +188,17 @@
                     </foreach>
                     ) and
                 </if>
-                <if test="city_idList != null">
+                <if test="cityIdList != null">
                     `city_id` in
-                    <foreach collection="city_idList" close=")" open="(" separator="," item="item">
+                    <foreach collection="cityIdList" close=")" open="(" separator="," item="item">
                         #{item}
                     </foreach> and
                 </if>
-                <if test="city_idSt !=null">
-                    `city_id` >= #{city_idSt} and
+                <if test="cityIdSt !=null">
+                    `city_id` >= #{cityIdSt} and
                 </if>
-                <if test="city_idEd!=null">
-                    `city_id` &lt;= #{city_idEd} and
+                <if test="cityIdEd!=null">
+                    `city_id` &lt;= #{cityIdEd} and
                 </if>
                 <if test="sexList != null">
                     `sex` in
@@ -240,17 +252,17 @@
                     </foreach>
                     ) and
                 </if>
-                <if test="create_timeList != null">
+                <if test="createTimeList != null">
                     `create_time` in
-                    <foreach collection="create_timeList" close=")" open="(" separator="," item="item">
+                    <foreach collection="createTimeList" close=")" open="(" separator="," item="item">
                         #{item}
                     </foreach> and
                 </if>
-                <if test="create_timeSt !=null">
-                    `create_time` >= #{create_timeSt} and
+                <if test="createTimeSt !=null">
+                    `create_time` >= #{createTimeSt} and
                 </if>
-                <if test="create_timeEd!=null">
-                    `create_time` &lt;= #{create_timeEd} and
+                <if test="createTimeEd!=null">
+                    `create_time` &lt;= #{createTimeEd} and
                 </if>
                 <if test="passwordList != null">
                     `password` in
@@ -272,6 +284,26 @@
                     </foreach>
                     ) and
                 </if>
+                <if test="loginNameList != null">
+                    `login_name` in
+                    <foreach collection="loginNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyLoginName!=null and fuzzyLoginName.size()>0">
+                    (
+                    <foreach collection="fuzzyLoginName"  separator="or" item="item">
+                        `Login_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyLoginName!=null and rightFuzzyLoginName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyLoginName"  separator="or" item="item">
+                        `Login_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
             </if>
         </trim>
     </select>
@@ -287,8 +319,8 @@
             <if test="name != null and name!=''">
                 `name` = #{name} and
             </if>
-            <if test="city_id != null">
-                `city_id` = #{city_id} and
+            <if test="cityId != null">
+                `city_id` = #{cityId} and
             </if>
             <if test="sex != null">
                 `sex` = #{sex} and
@@ -299,11 +331,14 @@
             <if test="email != null and email!=''">
                 `email` = #{email} and
             </if>
-            <if test="create_time != null">
-                `create_time` = #{create_time} and
+            <if test="createTime != null">
+                `create_time` = #{createTime} and
             </if>
             <if test="password != null and password!=''">
                 `password` = #{password} and
+            </if>
+            <if test="loginName != null and loginName!=''">
+                `login_name` = #{loginName} and
             </if>
             <if test = "(_parameter instanceof com.linktree.sikehome.entity.User$QueryBuilder) == true">
                     <if test="idList != null">
@@ -338,17 +373,17 @@
                     </foreach>
                     ) and
                 </if>
-                    <if test="city_idList != null">
+                    <if test="cityIdList != null">
                         `city_id` in
-                        <foreach collection="city_idList" close=")" open="(" separator="," item="item">
+                        <foreach collection="cityIdList" close=")" open="(" separator="," item="item">
                             #{item}
                         </foreach> and
                     </if>
-                <if test="city_idSt !=null">
-                    `city_id` >= #{city_idSt} and
+                <if test="cityIdSt !=null">
+                    `city_id` >= #{cityIdSt} and
                 </if>
-                <if test="city_idEd!=null">
-                    `city_id` &lt;= #{city_idEd} and
+                <if test="cityIdEd!=null">
+                    `city_id` &lt;= #{cityIdEd} and
                 </if>
                     <if test="sexList != null">
                         `sex` in
@@ -402,17 +437,17 @@
                     </foreach>
                     ) and
                 </if>
-                    <if test="create_timeList != null">
+                    <if test="createTimeList != null">
                         `create_time` in
-                        <foreach collection="create_timeList" close=")" open="(" separator="," item="item">
+                        <foreach collection="createTimeList" close=")" open="(" separator="," item="item">
                             #{item}
                         </foreach> and
                     </if>
-                <if test="create_timeSt !=null">
-                    `create_time` >= #{create_timeSt} and
+                <if test="createTimeSt !=null">
+                    `create_time` >= #{createTimeSt} and
                 </if>
-                <if test="create_timeEd!=null">
-                    `create_time` &lt;= #{create_timeEd} and
+                <if test="createTimeEd!=null">
+                    `create_time` &lt;= #{createTimeEd} and
                 </if>
                     <if test="passwordList != null">
                         `password` in
@@ -434,6 +469,26 @@
                     </foreach>
                     ) and
                 </if>
+                    <if test="loginNameList != null">
+                        `login_name` in
+                        <foreach collection="loginNameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyLoginName!=null and fuzzyLoginName.size()>0">
+                    (
+                    <foreach collection="fuzzyLoginName"  separator="or" item="item">
+                        `Login_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyLoginName!=null and rightFuzzyLoginName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyLoginName"  separator="or" item="item">
+                        `Login_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
             </if>
         </trim>
         limit 1
@@ -449,6 +504,7 @@
         `email`,
         `create_time`,
         `password`,
+        `login_name`,
         </trim>
     </sql>
 
@@ -475,7 +531,7 @@
                     <if test="fetchFields.fetchFields.name==true">
                         `name`,
                     </if>
-                    <if test="fetchFields.fetchFields.city_id==true">
+                    <if test="fetchFields.fetchFields.cityId==true">
                         `city_id`,
                     </if>
                     <if test="fetchFields.fetchFields.sex==true">
@@ -487,11 +543,14 @@
                     <if test="fetchFields.fetchFields.email==true">
                         `email`,
                     </if>
-                    <if test="fetchFields.fetchFields.create_time==true">
+                    <if test="fetchFields.fetchFields.createTime==true">
                         `create_time`,
                     </if>
                     <if test="fetchFields.fetchFields.password==true">
                         `password`,
+                    </if>
+                    <if test="fetchFields.fetchFields.loginName==true">
+                        `login_name`,
                     </if>
                     </if>
                     <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
@@ -501,7 +560,7 @@
                     <if test="fetchFields.excludeFields.name==null">
                         `name`,
                     </if>
-                    <if test="fetchFields.excludeFields.city_id==null">
+                    <if test="fetchFields.excludeFields.cityId==null">
                         `city_id`,
                     </if>
                     <if test="fetchFields.excludeFields.sex==null">
@@ -513,11 +572,14 @@
                     <if test="fetchFields.excludeFields.email==null">
                         `email`,
                     </if>
-                    <if test="fetchFields.excludeFields.create_time==null">
+                    <if test="fetchFields.excludeFields.createTime==null">
                         `create_time`,
                     </if>
                     <if test="fetchFields.excludeFields.password==null">
                         `password`,
+                    </if>
+                    <if test="fetchFields.excludeFields.loginName==null">
+                        `login_name`,
                     </if>
                     </if>
                     <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
