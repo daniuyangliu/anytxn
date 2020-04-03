@@ -1,82 +1,95 @@
 package com.linktree.sikehome.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.Tolerate;
+import java.util.Date;
 
-import java.io.Serializable;
-import java.util.*;
-
-/**
- * @author author
- */
-@Getter
-@Setter
-@ToString
-@Builder
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1585933724946L;
-
-    @Tolerate
-    public User() {
-    }
-
-    /**
-     * 主键
-     * <p>
-     * isNullAble:0
-     */
+public class User {
     private Long id;
 
-    /**
-     * 名称
-     * isNullAble:1
-     */
     private String name;
 
-    /**
-     * 城市
-     * isNullAble:1
-     */
     private Integer cityId;
 
-    /**
-     * 性别
-     * isNullAble:1
-     */
-    private Integer sex;
+    private Boolean sex;
 
-    /**
-     * 电话
-     * isNullAble:1
-     */
     private String phone;
 
-    /**
-     * 邮箱
-     * isNullAble:1
-     */
     private String email;
 
-    /**
-     * 创建时间
-     * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
-     */
     private Date createTime;
 
-    /**
-     * 密码
-     * isNullAble:1
-     */
     private String password;
 
-    /**
-     * 登录账号
-     * isNullAble:1
-     */
     private String loginName;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName == null ? null : loginName.trim();
+    }
 }

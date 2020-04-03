@@ -6,7 +6,7 @@ spring:
     name: shard-jdbc-starter
 
 mybatis:
-  mapper-locations: classpath:mapper/base/*.xml
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.linktree.sikehome.entity
 
 sharding:
