@@ -15,9 +15,8 @@ class YangliuApplicationTests {
     addressBaseMapper addressBaseMapper;
     @Test
     void contextLoads() {
-        address address = new address();
-        address.builder().name("郭磊").code("编码0001").build();
-        addressBaseMapper.insertaddress(address);
+        address build = address.builder().name("123123123").code("21331").build();
+        addressBaseMapper.insertaddress(build);
     }
 
 }
