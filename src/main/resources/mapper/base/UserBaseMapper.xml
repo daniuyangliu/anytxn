@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linktree.sikehome.mapper.base.UserBaseMapper">
-
+    <insert id="save" parameterType="com.linktree.sikehome.entity.User">
+        INSERT INTO t_user(name,phone,email,city_id,sex,password)
+        VALUES
+        (
+        #{name},#{phone},#{email},#{cityId},#{sex},#{password}
+        )
+    </insert>
 
     <insert id="insertUser" >
         INSERT INTO `t_user0`
