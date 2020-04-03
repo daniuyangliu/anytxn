@@ -7,10 +7,7 @@ import lombok.ToString;
 import lombok.experimental.Tolerate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author author
@@ -68,7 +65,7 @@ public class User implements Serializable {
      * 创建时间
      * isNullAble:0,defaultVal:CURRENT_TIMESTAMP
      */
-    private java.time.LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 密码

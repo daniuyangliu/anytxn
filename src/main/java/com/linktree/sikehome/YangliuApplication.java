@@ -17,7 +17,6 @@ public class YangliuApplication {
     * System.out.println(list.stream().map(User::getPassword).reduce((a,b)->a.concat("-").concat(b)).get());
     * */
     public static void main(String[] args) {
-        List<User> list = Arrays.asList(User.builder().name("郭磊").password("123").build(),User.builder().name("杨柳").password("456").build());
-        list.forEach(list1-> System.out.println(list1));
+        SpringApplication.run(YangliuApplication.class, args);
     }
 }
