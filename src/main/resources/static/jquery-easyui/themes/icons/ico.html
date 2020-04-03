@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Icons 速查表</title>
+	<script type="text/javascript" src="jquery-1.6.min.js"></script>
+    <style type="text/css">
+	body,td,th {font-family: 宋体;font-size: 12px;color: #666;}
+	body {margin:0; padding:0;  background-color: #fff;}
+	div,ul,li{margin:0;padding:0;list-style:none;border:none;}
+	img{border:none;display: }
+	#ico_sp{overflow: auto; padding-bottom: 10px;}
+	#ico_sp li{ float: left;width: 120px; margin-left:10px; margin-top:10px; padding-left:20px;line-height:20px;height:20px; background-position: left center;background-repeat: no-repeat;
+				border: 1px dashed #ccc;background-color: #fff;}
+	#ico_sp li:hover{border: 1px solid #c2dbfc; background-color: #e4effd; }
+	p{margin-left:10px;margin-right:10px; border: 1px dashed #ccc;background-color: #e4effd;line-height:20px;text-indent: 2em;}
+	</style>
+    <script type="text/javascript">
+        $(function () {
+         set_icos();
+        });
+	var names={
+'ico_005':'',
+'ico_007':'',
+'ico_008':'',
+'ico_009':'',
+'ico_017':'',
+'ico_031':'',
+'ico_032':'',
+'ico_033':'',
+'ico_034':'',
+'ico_035':'',
+'ico_038':'',
+'ico_039':'',
+'ico_045':'',
+'ico_047':'',
+'ico_051':'',
+'ico_052':'',
+'ico_053':'',
+'ico_055':'',
+'ico_064':'',
+'ico_066':'',
+'ico_068':'',
+'ico_071':'',
+'ico_073':'',
+'ico_082':'',
+'ico_083':'',
+'ico_086':'',
+'ico_088':'',
+'ico_102':'',	
+'ico_106':'',
+'ico_108':'',
+'ico_117':'',
+'ico_118':'',
+'ico_120':'',
+'ico_121':'',
+'ico_122':'',
+'ico_132':'',
+'ico_135':'',
+'ico_138':'',
+'ico_145':'',
+'ico_146':'',
+'ico_147':'',
+'ico_148':'',
+'ico_149':'',
+'ico_156':'',
+'ico_157':'',
+'ico_161':'',
+'ico_166':'',
+'ico_168':'',
+'ico_170':'',
+'ico_171':'',
+'ico_172':'',
+'ico_191':'',
+'ico_192':'',
+'ico_197':'',
+'ico_205':'',
+'ico_210':'',
+'ico_211':'',
+'ico_216':'',
+'ico_218':'',
+'ico_225':'',
+'ico_226':'',
+'ico_228':'',
+'ico_235':'',
+'ico_236':'',
+'ico_237':'',
+'ico_238':'',
+'ico_239':'',
+'ico_240':'',
+'ico_241':'',
+'ico_242':'',
+'ico_243':'',
+'ico_244':'',
+'ico_245':'',
+'ico_246':'',
+'ico_247':'',
+'ico_248':'',
+'ico_249':'',
+'ico_250':'',
+'ico_251':'',
+'ico_252':'',
+'ico_253':'',
+'ico_254':'',
+'ico_255':'',
+'ico_256':'',
+'ico_257':'',
+'ico_258':'',
+'ico_259':'',
+'ico_260':'',
+'ico_261':'',
+'ico_262':'',
+'ico_263':'',
+'ico_264':'',
+'ico_265':'',
+'ico_266':'',
+'ico_267':'',
+'ico_268':'',
+'ico_269':'',
+'ico_270':'',
+'ico_271':'',
+'ico_272':'',
+'ico_273':'',
+'ico_274':'',
+'ico_275':'',
+'ico_276':'',
+'ico_277':'',
+'ico_278':'',
+'ico_279':'',
+'ico_280':'',
+'ico_281':'',
+'ico_282':'',
+'ico_283':'',
+'ico_284':'',
+'ico_285':'',
+'ico_286':'',
+'ico_287':'',
+'ico_288':'',
+'ico_289':'',
+'ico_290':'',
+'ico_291':'',
+'ico_292':'',
+'ico_293':'',
+'ico_294':'',
+'ico_295':'',
+'ico_296':'',
+'ico_297':'',
+};
+        function set_icos(){
+		var name="";
+        	var str="";
+        	for(var n=1;n<=297;n++){
+        		var a;
+        		if(n<10){a="00"+n;}
+        		if(n>9&&n<100){a="0"+n;}
+        		if(n>99){a=n;}
+
+		$.each(names,function(k,b){
+			if(k=="ico_"+a){
+				name=b;	
+			}
+		});
+        	str+="<li title=\"ico_"+a+".png\" style=\"background-image:url(ico_"+a+".png);\">ico_"+a+"："+name+"</li>";
+		name="";
+        	}
+        	$("#ico_sp").append(str);
+        }
+    </script>
+</head>
+<body>
+	<p>说明：使用jeasy_ui控件需要用到图标时，复制图标样式名称，设置其iconCls="XXX"即可，如：icon="ico_164"。</p>
+	<ul id="ico_sp">
+		<li title="back.png" style="background-image:url(back.png)">icon-back</li>
+		<li title="cancel.png" style="background-image:url(cancel.png)">icon-cancel</li>
+		<li title="cut.png" style="background-image:url(cut.png)">icon-cut</li>
+		<li title="edit_add.png" style="background-image:url(edit_add.png)">icon-add</li>
+		<li title="edit_remove.png" style="background-image:url(edit_remove.png)">icon-remove</li>
+		<li title="filesave.png" style="background-image:url(filesave.png)">icon-save</li>
+		<li title="help.png" style="background-image:url(help.png)">icon-help</li>
+		<li title="icon_panel.gif" style="background-image:url(icon_panel.gif)">icon-panel</li>
+		<li title="no.png" style="background-image:url(no.png)">icon-no</li>
+		<li title="ok.png" style="background-image:url(ok.png)">icon-ok</li>
+		<li title="pencil.png" style="background-image:url(pencil.png)">icon-pencil</li>
+		<li title="print.png" style="background-image:url(print.png)">icon-print</li>
+		<li title="redo.png" style="background-image:url(redo.png)">icon-redo</li>
+		<li title="reload.png" style="background-image:url(reload.png)">icon-reload</li>
+		<li title="search.png" style="background-image:url(search.png)">icon-search</li>
+		<li title="sum.png" style="background-image:url(sum.png)">icon-sum</li>
+		<li title="tip.png" style="background-image:url(tip.png)">icon-tip</li>
+		<li title="undo.png" style="background-image:url(undo.png)">icon-undo</li>
+	</ul>
+</body>
+</html>

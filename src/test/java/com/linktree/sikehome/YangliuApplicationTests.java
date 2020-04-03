@@ -1,9 +1,9 @@
 package com.linktree.sikehome;
 
+import com.linktree.sikehome.entity.Address;
 import com.linktree.sikehome.entity.User;
-import com.linktree.sikehome.entity.address;
+import com.linktree.sikehome.mapper.AddressMapper;
 import com.linktree.sikehome.mapper.UserMapper;
-import com.linktree.sikehome.mapper.base.addressBaseMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 class YangliuApplicationTests {
     @Autowired
-    addressBaseMapper addressBaseMapper;
+    AddressMapper addressMapper;
     @Autowired
     UserMapper userMapper;
     @Test
     void contextLoads() {
-        address address1 = address.builder().name("郭磊112XXX").code("213").pid("2133").lit(2).build();
-        addressBaseMapper.insertaddress(address1);
+        Address address1 = Address.builder().name("郭磊112XXX").code("213").pid("2133").lit(2).build();
+        addressMapper.insertSelective(address1);
     }
     @Test
     void testUser() {
