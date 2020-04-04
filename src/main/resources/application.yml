@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: shard-jdbc-starter
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
