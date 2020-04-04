@@ -1,18 +1,24 @@
 package com.linktree.sikehome;
 
+import com.google.common.base.Stopwatch;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.util.StopWatch;
 
 @SpringBootApplication
+@Slf4j
 public class YangliuApplication {
 
-    /*
-    *  SpringApplication.run(YangliuApplication.class, args);
-    *  List<User> list = Arrays.asList(User.builder().name("郭磊").password("123").build(),User.builder().name("杨柳").password("456").build());
-    * System.out.println(list.stream().filter(list1 -> list1.getName().equals("郭磊")).findAny().get());
-    * System.out.println(list.stream().map(User::getPassword).reduce((a,b)->a.concat("-").concat(b)).get());
-    * */
+
     public static void main(String[] args) {
-        SpringApplication.run(YangliuApplication.class, args);
+        log.info("ITSOURCE启动....{}",Thread.currentThread().getName());
+        Stopwatch started = Stopwatch.createStarted();
+        new SpringApplicationBuilder().bannerMode(Banner.Mode.OFF)
+               .sources(YangliuApplication.class)
+               .run(args);
+        log.info("项目启动成功,耗时:{}",started.toString());
     }
 }
