@@ -8,7 +8,6 @@ spring:
     host: 127.0.0.1
     database: 0
     port: 6379
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.linktree.sikehome.entity
@@ -32,7 +31,7 @@ sharding:
     config:
       sharding:
         props:
-          sql.show: true
+          sql.show: false
         tables:
           t_user:
             key-generator-column-name: id

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+<script>$(document).ready(function (c) {
+    $('.close').on('click', function (c) {
+        $('.login-form').fadeOut('slow', function (c) {
+            $('.login-form').remove();
+        });
+    });
+});
+</script>
+<div class="login-form">
+    <div class="close"></div>
+    <div class="head-info">
+        <label class="lbl-1"> </label>
+        <label class="lbl-2"> </label>
+        <label class="lbl-3"> </label>
+    </div>
+    <div class="clear"></div>
+    <div class="avtar">
+        <img src="images/avtar.png"/>
+    </div>
+    <form id="loginId" method="post">
+        <input id="loginName" type="text" class="easyui-validatebox" value="userName" onfocus="this.value = '';"
+               onblur="if (this.value == '') {this.value = 'Username';}">
+        <div class="key">
+            <input id="password" type="password" class="easyui-validatebox" value="passWord" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'Password';}">
+        </div>
+    </form>
+    <div class="signin">
+        <input type="submit" value="Login" onclick="login()">
+    </div>
+</div>
+<div class="copy-rights">
+    <p>Copyright &copy; 2020.杨氏集团 <a href="/login/confirmLogin">welcome YOU</a></p>
+</div>
+
+</body>
+<script type="text/javascript">
+    function login() {
+        var postData = {
+            loginName:  $("#loginName").val(),
+            password:$("#password").val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "/login/confirmLogin",
+            data: JSON.stringify(postData),
+            contentType: 'application/json;charset=utf-8',
+            dataType: "text",
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.res) {
+                    alert(data.msg);
+                    window.location.href = "/login/main";
+                } else {
+                    alert(data.msg)
+                }
+            }
+        });
+    }
+</script>
+</html>
