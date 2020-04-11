@@ -6,10 +6,12 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.util.StopWatch;
 
 @SpringBootApplication
 @Slf4j
+@EnableAspectJAutoProxy // 相当xml配置 切面代理一个意思
 public class YangliuApplication {
 
 
